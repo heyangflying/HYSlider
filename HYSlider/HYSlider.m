@@ -157,24 +157,21 @@
     if(recognizer.state == UIGestureRecognizerStateEnded){
         (!self.showScrollTextView) ? (self.scrollShowTextView.hidden = YES) : (self.scrollShowTextView.hidden = NO);
     }else{
-
         self.scrollShowTextView.hidden = NO;
-        CGPoint translation = [recognizer locationInView:self];
+        CGPoint translation            = [recognizer locationInView:self];
         
         
         if((translation.x >=0 && ((_hyMaxValue/self.frame.size.width) * translation.x) <= _hyMaxValue)){
-            
-            self.leftView.frame = CGRectMake(0, 0, translation.x, self.frame.size.height);
+          
+            self.leftView.frame           = CGRectMake(0, 0, translation.x, self.frame.size.height);
             self.scrollShowTextView.frame = CGRectMake((translation.x-18)>= 0 ? (translation.x-18):(0) ,- 48, 36, 43);
-        
-            
-            _textLabel .frame =  CGRectMake((self.leftView.frame.size.width - 20) >= 0 ? (self.leftView.frame.size.width - 20):(0) , 0, 20, self.frame.size.height);
-            self.textLabel.text = [NSString stringWithFormat:@"%.f",(_hyMaxValue/self.frame.size.width) * translation.x];
+            self.textLabel .frame             = CGRectMake((self.leftView.frame.size.width - 20) >= 0 ? (self.leftView.frame.size.width - 20):(0) , 0, 20, self.frame.size.height);
+            self.textLabel.text           = [NSString stringWithFormat:@"%.f",(_hyMaxValue/self.frame.size.width) * translation.x];
             self.scrollShowTextLabel.text = [NSString stringWithFormat:@"%.f",(_hyMaxValue/self.frame.size.width) * translation.x];
 
             if(_showTouchView){
-                _touchView .frame = CGRectMake(0, 0, self.frame.size.height + 10, self.frame.size.height + 10);
-                _touchView.center = _textLabel.center;
+            _touchView .frame             = CGRectMake(0, 0, self.frame.size.height + 10, self.frame.size.height + 10);
+            _touchView.center             = _textLabel.center;
             }
          
             
@@ -186,8 +183,6 @@
             
         }
 
-        
-        
     }
 }
 
